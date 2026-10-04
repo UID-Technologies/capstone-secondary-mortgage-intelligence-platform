@@ -1,0 +1,1 @@
+-- Moved: use ../sample-seed-data.sql in this reference folder.

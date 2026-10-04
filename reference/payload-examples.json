@@ -1,0 +1,56 @@
+{
+  "envelope": {
+    "eventId": "550e8400-e29b-41d4-a716-446655440001",
+    "eventType": "PaymentReceived",
+    "schemaVersion": "1.0",
+    "occurredAt": "2026-03-15T14:30:00Z",
+    "correlationId": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+    "payload": {}
+  },
+  "examples": {
+    "MortgageCreated": {
+      "eventType": "MortgageCreated",
+      "payload": {
+        "mortgageExternalId": "MTG-1010",
+        "borrowerExternalId": "BOR-001",
+        "originalAmount": 320000.0,
+        "status": "PENDING"
+      }
+    },
+    "LoanApproved": {
+      "eventType": "LoanApproved",
+      "payload": {
+        "mortgageExternalId": "MTG-1010",
+        "loanExternalId": "LOAN-2010",
+        "underwritingDecision": "APPROVED",
+        "approvedByRole": "UNDERWRITER"
+      }
+    },
+    "PaymentReceived": {
+      "eventType": "PaymentReceived",
+      "payload": {
+        "mortgageExternalId": "MTG-1001",
+        "paymentAmount": 1850.0,
+        "paidDate": "2026-03-02",
+        "outstandingBalanceAfter": 317650.0
+      }
+    },
+    "PaymentMissed": {
+      "eventType": "PaymentMissed",
+      "payload": {
+        "mortgageExternalId": "MTG-1002",
+        "dueDate": "2026-01-01",
+        "daysPastDue": 31
+      }
+    },
+    "LoanDelinquent": {
+      "eventType": "LoanDelinquent",
+      "payload": {
+        "mortgageExternalId": "MTG-1002",
+        "delinquentSince": "2026-01-10",
+        "daysPastDue": 45,
+        "severity": "MODERATE"
+      }
+    }
+  }
+}

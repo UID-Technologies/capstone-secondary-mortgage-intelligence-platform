@@ -1,0 +1,1 @@
+-- Moved: use ../sample-starter-schema.sql in this reference folder.

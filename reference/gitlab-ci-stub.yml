@@ -1,0 +1,50 @@
+# Reference GitLab CI — merge into root .gitlab-ci.yml and expand in Milestone 9.
+# Stages align with curriculum Session 21 / 31.
+
+stages:
+  - validate
+  - test
+  - security
+  - build
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+
+secret_detection:
+  stage: validate
+  script:
+    - echo "Configure GitLab Secret Detection or gitleaks — fail on findings"
+
+python-test:
+  stage: test
+  image: python:3.11
+  script:
+    - cd analytics/mortgage-analytics-service && pip install -r requirements.txt && pytest
+  rules:
+    - changes:
+        - analytics/mortgage-analytics-service/**/*
+
+java-test:
+  stage: test
+  image: maven:3.9-eclipse-temurin-17
+  script:
+    - cd services/mortgage-service && mvn -B test
+  rules:
+    - changes:
+        - services/mortgage-service/**/*
+
+sast:
+  stage: security
+  script:
+    - echo "Add GitLab SAST template in Milestone 6/9"
+
+sca:
+  stage: security
+  script:
+    - echo "Add dependency scanning — block Critical CVEs per team policy"
+
+docker-build:
+  stage: build
+  script:
+    - echo "Milestone 5+ build and push images; scan in M9"
+  when: manual
